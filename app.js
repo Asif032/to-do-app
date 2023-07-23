@@ -13,10 +13,10 @@ app.use(express.urlencoded({ extended : false }));
 
 // create
 app.post('/insert', (request, response) => {
-  const { name } = request.body;
+  const { task } = request.body;
   const db = dbService.getDbServiceInstance();
   
-  const result = db.insertNewName(name);
+  const result = db.insertNewTask(task);
 
   result
   .then(data => response.json({ data: data }))
@@ -36,13 +36,13 @@ app.get('/getAll', (request, response) => {
 
 // update
 app.patch('/update', (request, response) => {
-  const { id, name } = request.body;
+  const { id, task } = request.body;
   const db = dbService.getDbServiceInstance();
 
-  const result = db.updateNameById(id, name);
+  const result = db.updateTaskById(id, task);
   
   result
-  .then(data => response.json({success : data}))
+  .then(data => response.json({ success : data }))
   .catch(err => console.log(err));
 });
 
@@ -54,15 +54,15 @@ app.delete('/delete/:id', (request, response) => {
   const result = db.deleteRowById(id);
   
   result
-  .then(data => response.json({success : data}))
+  .then(data => response.json({ success : data }))
   .catch(err => console.log(err));
 });
 
-app.get('/search/:name', (request, response) => {
-  const { name } = request.params;
+app.get('/search/:task', (request, response) => {
+  const { task } = request.params;
   const db = dbService.getDbServiceInstance();
 
-  const result = db.searchByName(name);
+  const result = db.searchByTaskName(task);
   
   result
   .then(data => response.json({data : data}))

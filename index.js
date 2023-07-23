@@ -44,10 +44,10 @@ function handleEditRow(id) {
 }
 
 updateBtn.onclick = function() {
-  const updateNameInput = document.querySelector('#update-task-input');
+  const updateTaskInput = document.querySelector('#update-task-input');
 
 
-  console.log(updateNameInput);
+  console.log(updateTaskInput);
 
   fetch('http://localhost:3000/update', {
     method: 'PATCH',
@@ -55,8 +55,8 @@ updateBtn.onclick = function() {
       'Content-type' : 'application/json'
     },
     body: JSON.stringify({
-      id: updateNameInput.dataset.id,
-      name: updateNameInput.value
+      id: updateTaskInput.dataset.id,
+      task: updateTaskInput.value
     })
   })
   .then(response => response.json())
@@ -71,16 +71,16 @@ updateBtn.onclick = function() {
 const addBtn = document.querySelector('#add-task-btn');
 
 addBtn.onclick = function () {
-  const nameInput = document.querySelector('#task-input');
-  const name = nameInput.value;
-  nameInput.value = "";
+  const taskInput = document.querySelector('#task-input');
+  const task = taskInput.value;
+  taskInput.value = "";
 
   fetch('http://localhost:3000/insert', {
     headers: {
         'Content-type': 'application/json'
     },
     method: 'POST',
-    body: JSON.stringify({ name : name})
+    body: JSON.stringify({ task : task})
   })
   .then(response => response.json())
   .then(data => insertRowIntoTable(data['data']));
@@ -125,10 +125,10 @@ function loadHTMLTable(data) {
 
   let tableHtml = "";
 
-  data.forEach(function ({id, name, date_added}) {
+  data.forEach(function ({id, task, date_added}) {
     tableHtml += "<tr>";
     tableHtml += `<td>${id}</td>`;
-    tableHtml += `<td>${name}</td>`;
+    tableHtml += `<td>${task}</td>`;
     tableHtml += `<td>${new Date(date_added).toLocaleString()}</td>`;
     tableHtml += `<td><button class="delete-row-btn" data-id=${id}>Delete</td>`;
     tableHtml += `<td><button class="edit-row-btn" data-id=${id}>Edit</td>`;

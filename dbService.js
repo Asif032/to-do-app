@@ -15,7 +15,7 @@ connection.connect((error) => {
   if (error) {
     console.log(error.message);
   }
-  // console.log('db ' + connection.state);
+  console.log('db ' + connection.state);
 });
 
 
@@ -42,7 +42,7 @@ class DbService {
   }
 
 
-  async insertNewName(task) {
+  async insertNewTask(task) {
     try {
       const dateAdded = new Date();
       const insertId = await new Promise((resolve, reject) => {
@@ -82,7 +82,7 @@ class DbService {
       }
   }
 
-  async updateNameById(id, task) {
+  async updateTaskById(id, task) {
       try {
         id = parseInt(id, 10); 
         const response = await new Promise((resolve, reject) => {
@@ -101,7 +101,7 @@ class DbService {
       }
   }
 
-  async searchByName(task) {
+  async searchByTaskName(task) {
     try {
       const response = await new Promise((resolve, reject) => {
         const query = "SELECT * FROM todolist WHERE task = ?;";
