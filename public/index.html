@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>web app</title>
+</head>
+<body>
+<form>
+  <label>Task:</label>
+  <input type="text" id="task-input">
+  <button id="add-task-btn">Add Task</button>
+
+  <br><br><br>
+  <div>
+    <input placeholder="search by task name" id="search-input">
+    <button id="search-btn">Search</button>
+  </div>
+
+  <table id="table">
+    <thead>
+    <th>ID</th>
+    <th>Task</th>
+    <th>Date Added</th>
+    <th>Delete</th>
+    <th>Edit</th>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <section hidden id="update-row">
+    <label>Name:</label>
+    <input type="text" id="update-task-input">
+    <button id="update-row-btn">Update</button>
+  </section>
+</form>
+<script src="index.js"></script>
+</body>
+</html>
