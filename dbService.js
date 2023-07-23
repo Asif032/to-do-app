@@ -15,13 +15,13 @@ connection.connect((error) => {
   if (error) {
     console.log(error.message);
   }
-  console.log('db ' + connection.state);
+  // console.log('db ' + connection.state);
 });
 
 
 class DbService {
   static getDbServiceInstance() {
-      return instance ? instance : new DbService();
+    return instance ? instance : new DbService();
   }
 
   async getAllData() {
@@ -63,7 +63,7 @@ class DbService {
     }
   }
 
-  async deleteRowById(id) {
+  async deleteRowById(id) {f
       try {
         id = parseInt(id, 10); 
         const response = await new Promise((resolve, reject) => {
@@ -96,8 +96,8 @@ class DbService {
 
         return response === 1 ? true : false;
       } catch (error) {
-          console.log(error);
-          return false;
+        console.log(error);
+        return false;
       }
   }
 
@@ -114,7 +114,7 @@ class DbService {
 
       return response;
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
   }
 }
