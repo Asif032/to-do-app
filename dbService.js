@@ -63,7 +63,7 @@ class DbService {
     }
   }
 
-  async deleteRowById(id) {f
+  async deleteRowById(id) {
       try {
         id = parseInt(id, 10); 
         const response = await new Promise((resolve, reject) => {
